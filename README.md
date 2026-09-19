@@ -13,15 +13,15 @@ Sequence_Detector_Verification/
 ├── rtl/
 │   ├── fsm_pkg.sv
 │   └── sd11011_mealy_pure.sv
-├── tb/
-│   ├── testbench_top.sv
-│   ├── test.sv
-│   ├── env.sv
-│   ├── agent.sv
-│   ├── generator.sv
+├── testbench/
 │   ├── driver.sv
+│   ├── dump.vcd
+│   ├── env.sv
+│   ├── generator.sv
+│   ├── interface.sv
 │   ├── monitor.sv
 │   ├── scoreboard.sv
+│   ├── testbench.sv
 │   └── transaction.sv
 ├── outputs/
 ├── REPORT.pdf
@@ -30,7 +30,7 @@ Sequence_Detector_Verification/
 
 ## Verification Environment
 
-The verification flow follows a layered architecture:
+The verification environment follows a layered architecture:
 
 ```text
 Generator → Driver → DUT → Monitor → Scoreboard
@@ -40,7 +40,7 @@ Transactions are transferred between components using mailboxes (`gen2drv` and `
 
 ## Verification Concepts Implemented
 
-The verification environment incorporates the following SystemVerilog verification concepts:
+The project incorporates the following SystemVerilog verification concepts:
 
 1. **Constraint Randomization** – Generates randomized `din` values to exercise diverse input scenarios.
 2. **Transaction Class** – Encapsulates stimulus and expected response into reusable transaction objects.
